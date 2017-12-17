@@ -1,1 +1,67 @@
+from math import sin, pi, log
 
+print("Запустить программу-1, выйти-0")
+enter = int(input())
+
+while enter == 1:
+    string_input = input("Введите значение а: ")
+    a = float(string_input)
+    string_input = input("Введите значение x от: ")
+    x_min = float(string_input)
+    string_input = input("До: ")
+    x_max = float(string_input)
+    string_input = input("Количество шагов: ")
+    steps = int(string_input)
+    x_step_value = (x_max-x_min)/steps
+    print("Вычислить функцию G - 1")
+    print("Вычислить функцию F - 2")
+    print("Вычислить функцию Y - 3")
+    c = int(input("Выберите функцию: "))
+    counter = 0
+    one_string = str()
+    y_values = []
+
+    if c == 1:
+        while x_min < x_max:
+            x = x_min
+            if (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2)) >= -0.00001 and (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2)) <= 0.00001:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                G = -(8 * 7 * (a ** 2) + 34 * a * x - 5 * (x ** 2)) / (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2))
+                y_values.append(G)
+            x_min += x_step_value
+    elif c == 2:
+        while x_min < x_max:
+            x = x_min
+            if sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2) >= -0.00001 and sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2) <= 0.00001:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                F = -(1) / sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2)
+                y_values.append(F)
+            x_min += x_step_value
+    elif c == 3:
+        while x_min < x_max:
+            x = x_min
+            if (42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1) <= 0:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                Y = log(42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1)
+                y_values.append(Y)
+            x_min += x_step_value
+    else:
+        print("Ошибка!")
+        break
+
+    file = open("/home/irina/PycharmProjects/lab07/text.txt", "w")
+    while counter < steps:
+        file.write(str(y_values[counter]) + "\n")
+        counter += 1
+    file.close()
+    y_values.clear()
+    file = open("/home/irina/PycharmProjects/lab07/text.txt", "r")
+    for line in file:
+        print(line)
+    file.close()
+
+    print("Запустить программу-1, выйти-0")
+    enter = int(input())

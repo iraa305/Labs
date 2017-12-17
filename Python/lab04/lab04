@@ -1,1 +1,87 @@
+import math
+from math import sin, log, pi
 
+print("Запустить программу - 1, выйти - 0")
+enter = int(input())
+
+while enter == 1:
+    a = float(input("Введите значение а: "))
+    x_from = float(input("Введите значение x от: "))
+    x_to = float(input("До: "))
+    steps = int(input("Количество шагов: "))
+    step_value = (x_to-x_from)/steps
+    print("Вычислить функцию G - 1")
+    print("Вычислить функцию F - 2")
+    print("Вычислить функцию Y - 3")
+    с = int(input("Выберите функцию: "))
+    counter = 0
+    x_values = []
+    y_values = []
+
+    if с == 1:
+        while x_from < x_to:
+            x = x_from
+            if (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2)) >= -0.00001 and (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2)) <= 0.00001:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                G = -(8 * 7 * (a ** 2) + 34 * a * x - 5 * (x ** 2)) / (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2))
+                x_values.append(x)
+                y_values.append(G)
+            x_from += step_value
+        min_array = y_values[counter]
+        max_array = y_values[counter]
+        while counter < steps:
+            if y_values[counter] < min_array:
+                min_array = y_values[counter]
+            if y_values[counter] > max_array:
+                max_array = y_values[counter]
+            counter += 1
+    elif с == 2:
+        while x_from < x_to:
+            x = x_from
+            if sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2) >= -0.00001 and sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2) <= 0.00001:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                F = -(1) / sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2)
+                x_values.append(x)
+                y_values.append(F)
+            x_from += step_value
+        min_array = y_values[counter]
+        max_array = y_values[counter]
+        while counter < steps:
+            if y_values[counter] < min_array:
+                min_array = y_values[counter]
+            if y_values[counter] > max_array:
+                max_array = y_values[counter]
+            counter += 1
+    elif с == 3:
+        while x_from < x_to:
+            x = x_from
+            if (42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1) <= 0:
+                print("Входные данные не подлежат области определения функции")
+            else:
+                Y = log(42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1)
+                x_values.append(x)
+                y_values.append(Y)
+            x_from += step_value
+        min_array = y_values[counter]
+        max_array = y_values[counter]
+        while counter < steps:
+            if y_values[counter] < min_array:
+                min_array = y_values[counter]
+            if y_values[counter] > max_array:
+                max_array = y_values[counter]
+            counter += 1
+    else:
+        print("Ошибка")
+        break
+
+    counter = 0
+    while counter < steps:
+        print("x = {},Значение функции = {}".format(x_values[counter], y_values[counter]))
+        counter += 1
+    print("\nНаибольший элемент массива = ", max_array)
+    print("Наименьший элемент массива = ", min_array)
+
+    print("\nЗапустить программу - 1, выйти - 0")
+    enter = int(input())

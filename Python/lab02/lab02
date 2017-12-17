@@ -1,1 +1,35 @@
+from math import sin, pi, log
 
+c = int(input('Введите c = 1 or 2 or 3: '))
+if c == 1:
+    a = float(input('Enter a: '))
+    x = float(input('Enter x: '))
+    z = (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2))
+    if z != 0:
+        G = -(8 * 7 * (a ** 2) + 34 * a * x - 5 * (x ** 2)) / (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2))
+        print('A = {}, X = {}, Result: {}'.format(a, x, G))
+    else:
+        print('Не входит в область определения')
+
+elif c == 2:
+    a = float(input('Enter a: '))
+    x = float(input('Enter x: '))
+    d = sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2)
+    if d != 0:
+        F = -(1) / d
+        print('A = {}, X = {}, Result: {}'.format(a, x, F))
+    else:
+        print('Не входит в область определения')
+
+elif c == 3:
+    a = float(input('Enter a: '))
+    x = float(input('Enter x: '))
+    v = (42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1)
+    if v > 0:
+        Y = log(42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1)
+        print('A = {}, X = {}, Result: {}'.format(a, x, Y))
+    else:
+        print('Не входит в область определения')
+
+else:
+    print('Не входит в область определения')

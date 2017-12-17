@@ -1,1 +1,50 @@
+from math import sin, pi, log
 
+c= 1
+while c != 0:
+    print("0-Quit\n1-Formula G\n2-Formula F\n3-Formula Y")
+    c = int(input("Select your choice:\n"))
+    while c > 3 or c < 0:
+        print("Invalid value")
+        c = int(input("Select your choice:"))
+    if c == 0:
+        print("Bay, bay!")
+        break
+    min = float(input("Enter minimum value of x:"))
+    max = float(input("Enter maximum value of x:"))
+    while min > max:
+        print("Maximum value of x should be grater than the minimum")
+        max = float(input("Enter maximum value of x again:"))
+    a = float(input("Enter a:"))
+    step = int(input("Enter the number of steps:"))
+    while step <= 0:
+        print("Invalid value,the number of steps can not be less than 0 or equal to 0")
+        step = int(input("Enter the number of steps again:"))
+    x = min
+
+    if c == 1:
+        for i in range(step):
+            z = (27 * (a ** 2) + 33 * a * x + 10 * (x ** 2))
+            if z == 0:
+                print("Not belong to the function definition")
+                break
+            G = -(8 * 7 * (a ** 2) + 34 * a * x - 5 * (x ** 2)) / z
+            print("G =", G)
+            x += (max - min) / (step - 1)
+    elif c == 2:
+        for i in range(step):
+            d = sin(27 * (a ** 2) - 5 * a * x - 12 * (x ** 2) - pi / 2)
+            if d == 0:
+                print("Not belong to the function definition")
+                break
+            F = -(1) / d
+            print("F =", F)
+            x += (max - min) / (step - 1)
+    elif c == 3:
+        for i in range(step):
+            if x < 0 or a < 0:
+                print("Not belong to the function definition")
+                break
+            Y = log(42 * (a ** 2) + 53 * a * x + 15 * (x ** 2) + 1)
+            print("Y =", Y)
+            x += (max - min) / (step - 1)

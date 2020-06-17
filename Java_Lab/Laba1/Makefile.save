@@ -1,0 +1,11 @@
+all: clean init
+clear	
+echo "Hello make!"
+
+init:
+	mkdir -p build/classes
+	mkdir bin
+
+clean:
+	rm -rf build
+	rm -rf bin
